@@ -1,0 +1,143 @@
+```
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <section class="main-content">
+            <h2>Welcome</h2>
+            <p>This is a responsive layout using Flexbox. Resize your browser to see the changes.</p>
+        </section>
+        <aside class="secondary-sidebar">
+            <h3>Sidebar</h3>
+            <ul>
+                <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li>
+            </ul>
+        </aside>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+```
+/* style.css */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+.nav-toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+    margin-bottom: 5px;
+}
+
+.nav-menu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin-bottom: 10px;
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em;
+}
+
+.main-content {
+    flex: 3;
+    padding: 20px;
+}
+
+.secondary-sidebar {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-toggle {
+        padding: 0.2em;
+    }
+    .nav-toggle span {
+        width: 15px;
+        height: 2px;
+    }
+}
+```
+
+```
+// script.js
+
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+});
+```
